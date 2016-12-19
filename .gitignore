@@ -1,0 +1,25 @@
+logs
+log
+
+# maven ignore
+target/
+node_modules
+*.jar
+*.war
+*.zip
+*.tar
+*.tar.gz
+
+# ide ignore
+.idea/
+*.ipr
+*.iml
+*.iws
+
+# temp ignore
+*.log
+*.cache
+*.diff
+*.patch
+*.tmp
+
