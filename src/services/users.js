@@ -3,7 +3,7 @@ import qs from 'qs';
 
 export async function query(params) {
     // return request(`/api/users?${qs.stringify(params)}`);
-    return request(`http://127.0.0.1:8080/order`);
+    return request(`http://127.0.0.1:8080/order?${qs.stringify(params)}`);
 }
 
 export async function create(params) {

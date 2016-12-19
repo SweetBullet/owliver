@@ -3,6 +3,7 @@ import { Router, Route } from 'dva/router';
 import HomePage from './routes/HomePage';
 import NotFound from './routes/NotFound';
 import Users from './routes/Users';
+import Message from './routes/Message';
 
 /* eslint react/prop-types:0 */
 export default function ({ history }) {
@@ -10,6 +11,7 @@ export default function ({ history }) {
     <Router history={history}>
       <Route path="/" component={HomePage} />
       <Route path="/users" component={Users} />
+      <Route path="/message" component={Message} />
       <Route path="*" component={NotFound} />
     </Router>
   );
