@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import { Form, Input, Button, Select } from 'antd';
+import {Form, Input, Button, Select } from 'antd';
 import styles from './UserSearch.less';
 
 const UserSearch = ({

@@ -1,13 +1,16 @@
 import React from 'react';
 import {Link} from 'dva/router';
 import styles from './HomePage.less';
-import {Menu, Icon, Switch} from 'antd';
+import {Menu, Icon, Switch, Carousel, Card} from 'antd';
 import MainLayout from '../components/MainLayout/MainLayout';
+import yay from '../assets/yay.jpg';
+import ld from '../assets/leduo.jpeg';
 
 
 const SubMenu = Menu.SubMenu;
 
 const HomePage = ({location}) => {
+
 
     return (
         <MainLayout location={location}>
@@ -20,36 +23,78 @@ const HomePage = ({location}) => {
                 {/*</ul>*/}
             </div>
             <div className={styles.list}>
-                <Menu
-                    theme='light'
-                    style={{width: 240}}
-                    defaultOpenKeys={['sub1']}
-                    mode="inline"
-                >
-                    <SubMenu key="sub1" title={<span><Icon type="mail"/><span>历史消息</span></span>}>
-                        <Menu.Item key="1"><Link to="/message">批发</Link></Menu.Item>
-                        <Menu.Item key="2"><Link to="/users">用户</Link></Menu.Item>
-                    </SubMenu>
-                    <SubMenu key="sub2" title={<span><Icon type="mail"/><span>消息总量</span></span>}>
-                        <Menu.Item key="5">今天</Menu.Item>
-                        <Menu.Item key="6">最近7天</Menu.Item>
-                        <Menu.Item key="6">最近1月</Menu.Item>
-                        <Menu.Item key="6">最近3月</Menu.Item>
-                        <SubMenu key="sub3" title="Submenu">
-                            <Menu.Item key="7">Option 7</Menu.Item>
-                            <Menu.Item key="8">Option 8</Menu.Item>
+                <div>
+                    <Menu
+                        theme='light'
+                        style={{width: 240}}
+                        defaultOpenKeys={['sub1']}
+                        mode="inline"
+                    >
+                        <SubMenu key="sub1" title={<span><Icon type="search"/><span>历史查询</span></span>}>
+                            <Menu.Item key="1"><Link to="/message"><Icon type="message"/>历史消息</Link></Menu.Item>
+                            <Menu.Item key="2"><Link to="/users"><Icon type="team"/>历史会话</Link></Menu.Item>
                         </SubMenu>
-                    </SubMenu>
-                    <SubMenu key="sub4" title={<span><Icon type="setting"/><span>帮助设置</span></span>}>
-                        <Menu.Item key="9">Option 9</Menu.Item>
-                        <Menu.Item key="10">Option 10</Menu.Item>
-                        <Menu.Item key="11">Option 11</Menu.Item>
-                        {/*<Menu.Item key="12" className={styles.}>Option 12</Menu.Item>*/}
-                    </SubMenu>
-                </Menu>
+                        <SubMenu key="sub2" title={<span><Icon type="file"/><span>统计查询</span></span>}>
+                            {/*<Menu.Item key="5"><Link to="/amount">消息</Link></Menu.Item>*/}
+                            {/*<SubMenu key="sub3" title={<span><Icon type="message"/><span>消息</span></span>}>*/}
+                                {/*<Menu.Item key="3"><Link to="/amount">今日消息</Link></Menu.Item>*/}
+                                {/*<Menu.Item key="4"><Link to="/amount">最近三天</Link></Menu.Item>*/}
+                            {/*</SubMenu>*/}
+                            <Menu.Item key="4"><Link to="/amount"><Icon type="message"/>消息</Link></Menu.Item>
+                            <Menu.Item key="5"><span><Icon type="mobile"/><span>短信</span></span></Menu.Item>
+                            <Menu.Item key="6"><span><Icon type="mail"/><span>邮件</span></span></Menu.Item>
+                            <Menu.Item key="7"><span><Icon type="swap"/><span>连接</span></span></Menu.Item>
+                        </SubMenu>
+                        <SubMenu key="sub4" title={<span><Icon type="setting"/><span>帮助设置</span></span>}>
+                            <Menu.Item key="9">Option 9</Menu.Item>
+                            <Menu.Item key="10">Option 10</Menu.Item>
+                            <Menu.Item key="11">Option 11</Menu.Item>
+                        </SubMenu>
+                    </Menu>
+                </div>
+                <div className={styles.z}>
+                    <Carousel autoplay>
+                        <div>
+                            <Card style={{width: 240}} bodyStyle={{padding: 0}}>
+                                <div className="custom-image">
+                                    <img alt="example" width="100%"
+                                         src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"/>
+                                </div>
+                                <div className="custom-card">
+                                    {/*<h3>Europe Street beat</h3>*/}
+                                    <p>www.youzan.com</p>
+                                </div>
+                            </Card>
+                        </div>
+                        <div>
+                            <Card style={{width: 240}} bodyStyle={{padding: 0}}>
+                                <div className="ld-image">
+                                    <img alt="example" width="100%" src={ld}/>
+                                </div>
+                                <div className="custom-card">
+                                    {/*<h3>Europe Street beat</h3>*/}
+                                    <p>www.youzan.com</p>
+                                </div>
+                            </Card>
+                        </div>
+                        <div>
+                            <Card style={{width: 240}} bodyStyle={{padding: 0}}>
+                                <div className="ld-image">
+                                    <img alt="example" width="100%" src={yay}/>
+                                </div>
+                                <div className="custom-card">
+                                    {/*<h3>Europe Street beat</h3>*/}
+                                    <p>www.youzan.com</p>
+                                </div>
+                            </Card>
+                        </div>
+                    </Carousel>
+                </div>
             </div>
-        </MainLayout>
-    );
+        </
+            MainLayout >
+    )
+        ;
 }
 
 HomePage.propTypes = {};

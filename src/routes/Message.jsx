@@ -13,7 +13,8 @@ function Message({location, dispatch, message}) {
     } = message;
 
     const messageListProps = {
-        dataSource: list,
+        dataSource:
+        list,
         loading,
         total,
         current,

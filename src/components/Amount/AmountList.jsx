@@ -1,32 +1,30 @@
 import React, {PropTypes} from 'react';
 import {Table, Popconfirm, Pagination} from 'antd';
 
-function MessageList({
+function AmountList({
     total, current, loading, dataSource,
     onPageChange,
 }) {
     const columns = [{
-        title: '发送人',
-        dataIndex: 'name',
-        key: 'name',
-        render: (text) => <a href="#">{text}</a>,
-    }, {
-        title: '会话',
-        dataIndex: 'conversation',
-        key: 'conversation',
-    }, {
-        title: '时间',
-        dataIndex: 'time',
-        key: 'time',
-    }, {
         title: '通道',
         dataIndex: 'channel',
         key: 'channel',
+        render: (text) => <a href="#">{text}</a>,
     }, {
-        title: '内容',
-        dataIndex: 'content',
-        key: 'content',
-    }];
+        title: '消息量',
+        dataIndex: 'amount',
+        key: 'amount',
+    },
+        // {
+        //     title: '时间',
+        //     dataIndex: 'time',
+        //     key: 'time',
+        // }, {
+        //     title: '内容',
+        //     dataIndex: 'content',
+        //     key: 'content',
+        // }
+        ];
 
     return (
         <div>
@@ -48,7 +46,7 @@ function MessageList({
     );
 }
 
-MessageList.propTypes = {
+AmountList.propTypes = {
     onPageChange: PropTypes.func,
     dataSource: PropTypes.array,
     loading: PropTypes.any,
@@ -56,4 +54,4 @@ MessageList.propTypes = {
     current: PropTypes.any,
 };
 
-export default MessageList;
+export default AmountList;

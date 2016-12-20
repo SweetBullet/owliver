@@ -9,7 +9,8 @@
     "dva": "^1.1.0",
     "qs": "^6.2.0",
     "react": "^15.1.0",
-    "react-dom": "^15.1.0"
+    "react-dom": "^15.1.0",
+    "yay": "^0.1.0"
   },
   "devDependencies": {
     "atool-build": "^0.7.6",

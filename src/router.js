@@ -1,18 +1,20 @@
 import React from 'react';
-import { Router, Route } from 'dva/router';
+import {Router, Route} from 'dva/router';
 import HomePage from './routes/HomePage';
 import NotFound from './routes/NotFound';
 import Users from './routes/Users';
 import Message from './routes/Message';
+import Amount from './routes/Amount';
 
 /* eslint react/prop-types:0 */
-export default function ({ history }) {
-  return (
-    <Router history={history}>
-      <Route path="/" component={HomePage} />
-      <Route path="/users" component={Users} />
-      <Route path="/message" component={Message} />
-      <Route path="*" component={NotFound} />
-    </Router>
-  );
+export default function ({history}) {
+    return (
+        <Router history={history}>
+            <Route path="/" component={HomePage}/>
+            <Route path="/users" component={Users}/>
+            <Route path="/message" component={Message}/>
+            <Route path="/amount" component={Amount}/>
+            <Route path="*" component={NotFound}/>
+        </Router>
+    );
 }

@@ -33,7 +33,7 @@ function Header({location}) {
                 <Link to="/page-you-dont-know"><Icon type="frown-circle"/>404</Link>
             </Menu.Item>
             <Menu.Item key="youzan">
-                <a href="https://www.youzan.com/" target="_blank">有赞</a>
+                <a href="https://www.youzan.com/" target="_blank"><Icon type="like-o"/>有赞</a>
             </Menu.Item>
             <Menu.Item key="version">
                 <div className={styles.head}>Owl-V1.0</div>
