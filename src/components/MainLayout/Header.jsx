@@ -36,10 +36,12 @@ function Header({location}) {
                 <a href="https://www.youzan.com/" target="_blank"><Icon type="like-o"/>有赞</a>
             </Menu.Item>
             <Menu.Item key="version">
-                <div className={styles.head}>Owl-V1.0</div>
+                <div className={styles.head}>
+                    <a href="http://doc.qima-inc.com/display/engineer/Owl" target="_blank"><Icon type="pushpin-o"/>Owl-V1.0</a>
+                </div>
             </Menu.Item>
         </Menu>
-);
+    );
 }
 
 Header.propTypes = {

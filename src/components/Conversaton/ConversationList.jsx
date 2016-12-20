@@ -1,35 +1,35 @@
 import React, {PropTypes} from 'react';
 import {Table, Popconfirm, Pagination} from 'antd';
 
-function MessageList({
+function ConversationList({
     total, current, loading, dataSource,
     onPageChange,
 }) {
     const columns = [{
-        title: '发送人',
-        dataIndex: 'name',
-        key: 'name',
+        title: '序号',
+        dataIndex: 'id',
+        key: 'id',
+    }, {
+        title: '客服uid',
+        dataIndex: 'uid',
+        key: 'uid',
+    }, {
+        title: '客服昵称',
+        dataIndex: 'nickname',
+        key: 'nickname',
         render: (text) => <a href="#">{text}</a>,
     }, {
         title: '会话',
         dataIndex: 'conversation',
         key: 'conversation',
     }, {
-        title: '店铺',
-        dataIndex: 'shop',
-        key: 'shop',
-    }, {
-        title: '时间',
-        dataIndex: 'time',
-        key: 'time',
-    }, {
         title: '通道',
         dataIndex: 'channel',
         key: 'channel',
     }, {
-        title: '内容',
-        dataIndex: 'content',
-        key: 'content',
+        title: '创建时间',
+        dataIndex: 'time',
+        key: 'time',
     }];
 
     return (
@@ -45,14 +45,14 @@ function MessageList({
                 className="ant-table-pagination"
                 total={total}
                 current={current}
-                pageSize={7}
+                pageSize={6}
                 onChange={onPageChange}
             />
         </div>
     );
 }
 
-MessageList.propTypes = {
+ConversationList.propTypes = {
     onPageChange: PropTypes.func,
     dataSource: PropTypes.array,
     loading: PropTypes.any,
@@ -60,4 +60,4 @@ MessageList.propTypes = {
     current: PropTypes.any,
 };
 
-export default MessageList;
+export default ConversationList;

@@ -5,7 +5,7 @@ import MainLayout from '../components/MainLayout/MainLayout';
 import AmountProgress from '../components/Amount/AmountProgress';
 import AmountList from '../components/Amount/AmountList';
 import AmountButton from '../components/Amount/AmountButton';
-import styles from './Amount.less';
+import styles from './Default.less';
 
 function Amount({location, dispatch, amount}) {
     const {
@@ -26,12 +26,6 @@ function Amount({location, dispatch, amount}) {
         loading,
         total,
         current,
-        onPageChange(page) {
-            dispatch(routerRedux.push({
-                pathname: '/amount',
-                query: {field, keyword, page},
-            }));
-        },
     };
 
     const amountProgress = {
@@ -45,7 +39,7 @@ function Amount({location, dispatch, amount}) {
 
     return (
         <MainLayout location={location}>
-            <div className={styles.normal}>
+            <div className={styles.n}>
                 <AmountButton {...amountButtonProps} /> <br/>
                 <AmountList {...amountListProps}/>
                 <AmountProgress {...amountProgress} />

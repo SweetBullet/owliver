@@ -3,7 +3,6 @@ import {Table, Popconfirm, Pagination} from 'antd';
 
 function AmountList({
     total, current, loading, dataSource,
-    onPageChange,
 }) {
     const columns = [{
         title: '通道',
@@ -35,19 +34,11 @@ function AmountList({
                 rowKey={record => record.id}
                 pagination={false}
             />
-            <Pagination
-                className="ant-table-pagination"
-                total={total}
-                current={current}
-                pageSize={10}
-                onChange={onPageChange}
-            />
         </div>
     );
 }
 
 AmountList.propTypes = {
-    onPageChange: PropTypes.func,
     dataSource: PropTypes.array,
     loading: PropTypes.any,
     total: PropTypes.any,

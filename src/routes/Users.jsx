@@ -2,7 +2,7 @@ import React, {PropTypes} from 'react';
 import {routerRedux} from 'dva/router';
 import {connect} from 'dva';
 import MainLayout from '../components/MainLayout/MainLayout';
-import styles from './Users.less';
+import styles from './Default.less';
 import UserList from '../components/Users/UserList';
 import UserSearch from '../components/Users/UserSearch';
 import UserModal from '../components/Users/UserModal';

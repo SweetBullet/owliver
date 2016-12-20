@@ -1,4 +1,4 @@
-import {create, remove, update, query} from '../services/message';
+import { query} from '../services/message';
 import {parse} from 'qs';
 
 export default {

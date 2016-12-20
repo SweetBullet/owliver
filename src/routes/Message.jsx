@@ -2,14 +2,13 @@ import React, {PropTypes} from 'react';
 import {routerRedux} from 'dva/router';
 import {connect} from 'dva';
 import MainLayout from '../components/MainLayout/MainLayout';
-import styles from './Message.less';
+import styles from './Default.less';
 import MessageList from '../components/Message/MessageList';
 import MessageSearch from '../components/Message/MessageSearch';
 
 function Message({location, dispatch, message}) {
     const {
         loading, list, total, current, field, keyword,
-        currentItem, modalVisible, modalType
     } = message;
 
     const messageListProps = {
@@ -39,7 +38,7 @@ function Message({location, dispatch, message}) {
 
     return (
         <MainLayout location={location}>
-            <div className={styles.normal}>
+            <div className={styles.n}>
                 <MessageSearch {...messageSearchProps} />
                 <MessageList {...messageListProps} />
             </div>
