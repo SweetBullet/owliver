@@ -2,8 +2,9 @@ import React, {PropTypes} from 'react';
 import {Progress} from 'antd';
 
 function AmountProgress({
-    dkf, wxd, wsc, fx, pf, ls,
+    dkf, wxd, wsc, fx, pf, ls
 }) {
+
     return (
 
         <div>

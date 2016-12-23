@@ -1,24 +1,44 @@
-import React, {PropTypes} from 'react';
+import React, {Component, PropTypes} from 'react';
 import {routerRedux} from 'dva/router';
 import {connect} from 'dva';
 import MainLayout from '../components/MainLayout/MainLayout';
-import AmountProgress from '../components/Amount/AmountProgress';
-import AmountList from '../components/Amount/AmountList';
-import AmountButton from '../components/Amount/AmountButton';
 import styles from './Default.less';
+import ECharts from 'react-echarts';
+import {Switch} from 'antd';
+import AmountButton from '../components/Amount/AmountButton';
+import AmountChart from '../components/Amount/AmountChart';
+import AmountMonthChart from '../components/Amount/AmountMonthChart'
 
-
-function Amount({location, dispatch, amount}) {
+function AmountMonth({location, dispatch, amount}) {
 
     const {
-        loading, list, total, current, field, keyword, percent,
-    }=amount;
+         // threeWeekAgo,twoWeekAgo,oneWeekAgo,thisWeek,
+        monthAmounts,dateInfo,
+    } = amount;
 
+
+    const amountChartProps = {
+        threeWeekAgo:monthAmounts['threeWeekAgo'],
+        twoWeekAgo: monthAmounts['twoWeekAgo'],
+        oneWeekAgo:monthAmounts['oneWeekAgo'],
+        thisWeek:monthAmounts['thisWeek'],
+        dateInfo:dateInfo,
+    };
+
+    function onChange(checked) {
+        console.log(`switch to ${new date()}`);
+        console.log(`amounts:${monthAmounts['threeWeekAgo'][0]}`);
+
+        // dispatch({
+        //     type: 'amount/update',
+        //     payload: checked,
+        // });
+    };
 
     const amountButtonProps = {
-        cursor:'1',
+        cursor: '4',
         handleChange(term){
-            switch (term){
+            switch (term) {
                 case '1':
                     dispatch(routerRedux.push({
                         pathname: '/amount',
@@ -50,29 +70,13 @@ function Amount({location, dispatch, amount}) {
         },
     }
 
-    const amountListProps = {
-        dataSource: list,
-        loading,
-        total,
-        current,
-    };
-
-    const amountProgress = {
-        dkf: percent['dkf'],
-        fx: percent['fx'],
-        wxd: percent['wxd'],
-        wsc: percent['wsc'],
-        pf: percent['ls'],
-        ls: percent['pf'],
-    }
-
-
     return (
-        <MainLayout location={location}>
+        <MainLayout location={location}><br/>
             <div className={styles.n}>
-                <AmountButton {...amountButtonProps} /> <br/>
-                <AmountList {...amountListProps}/>
-                <AmountProgress {...amountProgress} />
+                <AmountButton {...amountButtonProps}/> <br/>
+                <Switch defaultChecked={false} unCheckedChildren="饼图" checkedChildren="返回" onChange={onChange}/>
+                <br/><br/>
+                <AmountMonthChart {...amountChartProps}/>
             </div>
         </MainLayout>
     );
@@ -80,7 +84,7 @@ function Amount({location, dispatch, amount}) {
 }
 
 
-Amount.propTypes = {
+AmountMonth.propTypes = {
     amount: PropTypes.object,
     location: PropTypes.object,
     dispatch: PropTypes.func,
@@ -90,4 +94,6 @@ function mapStateToProps({amount}) {
     return {amount};
 }
 
-export default connect(mapStateToProps)(Amount);
+
+export default connect(mapStateToProps)(AmountMonth);
+

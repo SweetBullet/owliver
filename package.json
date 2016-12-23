@@ -7,9 +7,11 @@
     "antd": "^2.0.1",
     "dora-plugin-browser-history": "^0.2.0",
     "dva": "^1.1.0",
+    "echarts": "^3.3.2",
     "qs": "^6.2.0",
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
+    "react-echarts": "^0.1.1",
     "yay": "^0.1.0"
   },
   "devDependencies": {

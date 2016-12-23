@@ -5,6 +5,7 @@ import {Menu, Icon, Switch, Carousel, Card} from 'antd';
 import MainLayout from '../components/MainLayout/MainLayout';
 import ld from '../assets/leduo.jpeg';
 import yz from '../assets/logo.png';
+import dq from '../assets/党旗.jpg';
 
 
 const SubMenu = Menu.SubMenu;
@@ -79,6 +80,17 @@ const HomePage = ({location}) => {
                             <Card style={{width: 240}} bodyStyle={{padding: 0}}>
                                 <div className="yz">
                                     <img alt="example" width="100%" src={yz}/>
+                                </div>
+                                <div className="custom-card">
+                                    {/*<h3>Europe Street beat</h3>*/}
+                                    <p>www.youzan.com</p>
+                                </div>
+                            </Card>
+                        </div>
+                        <div>
+                            <Card style={{width: 240}} bodyStyle={{padding: 0}}>
+                                <div className="dq">
+                                    <img alt="example" width="100%" src={dq}/>
                                 </div>
                                 <div className="custom-card">
                                     {/*<h3>Europe Street beat</h3>*/}
