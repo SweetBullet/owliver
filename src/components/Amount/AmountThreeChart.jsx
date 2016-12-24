@@ -2,7 +2,7 @@ import React, {PropTypes} from 'react';
 import {Switch} from 'antd';
 import ECharts from 'react-echarts';
 
-function AmountChart({
+function AmountThreeChart({
     barOrPie, amounts
 }) {
 
@@ -204,9 +204,9 @@ function AmountChart({
     );
 }
 
-AmountChart.propTypes = {
+AmountThreeChart.propTypes = {
     barOrPie: PropTypes.any,
     amounts: PropTypes.array,
 };
 
-export default AmountChart;
+export default AmountThreeChart;

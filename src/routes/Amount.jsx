@@ -5,6 +5,7 @@ import MainLayout from '../components/MainLayout/MainLayout';
 import AmountProgress from '../components/Amount/AmountProgress';
 import AmountList from '../components/Amount/AmountList';
 import AmountButton from '../components/Amount/AmountButton';
+import AmountTodayChart from '../components/Amount/AmountTodayChart';
 import styles from './Default.less';
 
 
@@ -16,9 +17,9 @@ function Amount({location, dispatch, amount}) {
 
 
     const amountButtonProps = {
-        cursor:'1',
+        cursor: '1',
         handleChange(term){
-            switch (term){
+            switch (term) {
                 case '1':
                     dispatch(routerRedux.push({
                         pathname: '/amount',
@@ -32,12 +33,6 @@ function Amount({location, dispatch, amount}) {
                     }));
                     break;
                 case '3':
-                    dispatch(routerRedux.push({
-                        pathname: '/amount1week',
-                        query: {term},
-                    }));
-                    break;
-                case '4':
                     dispatch(routerRedux.push({
                         pathname: '/amount1month',
                         query: {term},
@@ -69,10 +64,11 @@ function Amount({location, dispatch, amount}) {
 
     return (
         <MainLayout location={location}>
-            <div className={styles.n}>
-                <AmountButton {...amountButtonProps} /> <br/>
-                <AmountList {...amountListProps}/>
-                <AmountProgress {...amountProgress} />
+            <div className={styles.p}>
+                <AmountButton {...amountButtonProps} /> <br/><br/>
+                <AmountTodayChart />
+                {/*<AmountList {...amountListProps}/>*/}
+                {/*<AmountProgress {...amountProgress} />*/}
             </div>
         </MainLayout>
     );

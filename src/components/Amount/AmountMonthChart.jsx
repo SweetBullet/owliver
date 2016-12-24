@@ -80,7 +80,7 @@ function AmountMonthChart({
         baseOption: {
             timeline: {
                 axisType: 'category',
-                autoPlay: false,
+                autoPlay: true,
                 playInterval: 1000,
                 data: [
                     {

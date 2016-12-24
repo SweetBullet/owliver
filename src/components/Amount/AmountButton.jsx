@@ -24,8 +24,7 @@ function AmountButton({
             <RadioGroup size="large" onChange={onChange} defaultValue={cursor}>
                 <RadioButton value="1">今日消息</RadioButton>
                 <RadioButton value="2">最近三天</RadioButton>
-                <RadioButton value="3">最近一周</RadioButton>
-                <RadioButton value="4">最近一月</RadioButton>
+                <RadioButton value="3">最近一月</RadioButton>
             </RadioGroup>
         </div>
     );

@@ -6,7 +6,7 @@ import styles from './Default.less';
 import ECharts from 'react-echarts';
 import {Switch} from 'antd';
 import AmountButton from '../components/Amount/AmountButton';
-import AmountChart from '../components/Amount/AmountChart';
+import AmountChart from '../components/Amount/AmountThreeChart';
 import AmountMonthChart from '../components/Amount/AmountMonthChart'
 
 function AmountMonth({location, dispatch, amount}) {
@@ -52,12 +52,6 @@ function AmountMonth({location, dispatch, amount}) {
                     }));
                     break;
                 case '3':
-                    dispatch(routerRedux.push({
-                        pathname: '/amount1week',
-                        query: {term},
-                    }));
-                    break;
-                case '4':
                     dispatch(routerRedux.push({
                         pathname: '/amount1month',
                         query: {term},

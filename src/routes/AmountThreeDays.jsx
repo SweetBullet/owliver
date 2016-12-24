@@ -5,7 +5,7 @@ import MainLayout from '../components/MainLayout/MainLayout';
 import styles from './Default.less';
 import {Switch} from 'antd';
 import AmountButton from '../components/Amount/AmountButton';
-import AmountChart from '../components/Amount/AmountChart';
+import AmountThreeChart from '../components/Amount/AmountThreeChart';
 
 function AmountThreeDays({location, dispatch, amount}) {
 
@@ -46,12 +46,6 @@ function AmountThreeDays({location, dispatch, amount}) {
                     break;
                 case '3':
                     dispatch(routerRedux.push({
-                        pathname: '/amount1week',
-                        query: {term},
-                    }));
-                    break;
-                case '4':
-                    dispatch(routerRedux.push({
                         pathname: '/amount1month',
                         query: {term},
                     }));
@@ -69,7 +63,7 @@ function AmountThreeDays({location, dispatch, amount}) {
                 <AmountButton {...amountButtonProps}/> <br/>
                 <Switch defaultChecked={false} unCheckedChildren="饼图" checkedChildren="返回" onChange={onChange}/>
                 <br/><br/>
-                <AmountChart {...amountChartProps}/>
+                <AmountThreeChart {...amountChartProps}/>
             </div>
         </MainLayout>
     );
