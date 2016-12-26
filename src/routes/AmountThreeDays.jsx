@@ -10,21 +10,32 @@ import AmountThreeChart from '../components/Amount/AmountThreeChart';
 function AmountThreeDays({location, dispatch, amount}) {
 
     const {
-        barOrPie, amounts,
+        isBarForThreeDay, amounts,
     } = amount;
 
 
     const amountChartProps = {
-        barOrPie: barOrPie,
-        amounts: amounts,
+        isBar: isBarForThreeDay,
+        thisWeekAmounts: amounts['thisWeek'],
     };
 
     function onChange(checked) {
-        console.log(`switch to ${checked},barOrPie:${barOrPie}`);
+        console.log(`switch to ${checked},isBarForThreeDay:${isBarForThreeDay}`);
         dispatch({
-            type: 'amount/update',
-            payload: checked,
+            type: 'amount/updateSuccess',
+            payload: !checked,
         });
+
+        var da = new Date();
+        da.setDate(da.getDate() - 1);
+        console.log(`date:${da.getFullYear()}-${da.getMonth()}-${da.getDate()}`);
+        var a1=[1,2];
+        var a2=[3,4];
+        var a=[];
+        Array.prototype.push.apply(a, a1);
+        console.log(`a:${a}`);
+        Array.prototype.push.apply(a, a2);
+        console.log(`a:${a}`);
     };
 
     const amountButtonProps = {
@@ -61,7 +72,7 @@ function AmountThreeDays({location, dispatch, amount}) {
         <MainLayout location={location}><br/>
             <div className={styles.n}>
                 <AmountButton {...amountButtonProps}/> <br/>
-                <Switch defaultChecked={false} unCheckedChildren="饼图" checkedChildren="返回" onChange={onChange}/>
+                <Switch defaultChecked={false} unCheckedChildren="饼图" checkedChildren="柱形图" onChange={onChange}/>
                 <br/><br/>
                 <AmountThreeChart {...amountChartProps}/>
             </div>

@@ -1,9 +1,8 @@
 import React, {PropTypes} from 'react';
-import {Switch} from 'antd';
 import ECharts from 'react-echarts';
 
 function AmountThreeChart({
-    barOrPie, amounts
+    isBar, thisWeekAmounts,
 }) {
 
     var chartBarOption = {
@@ -48,11 +47,11 @@ function AmountThreeChart({
             {
                 name: '多客服',
                 type: 'bar',
-                data: amounts[0],
+                data: thisWeekAmounts[0].slice(4, 7),
                 markPoint: {
                     data: [
                         {type: 'max', name: '最大值'},
-                        {type: 'min', name: '最小值'}
+                        // {type: 'min', name: '最小值'}
                     ]
                 },
                 markLine: {
@@ -64,11 +63,11 @@ function AmountThreeChart({
             {
                 name: '分销',
                 type: 'bar',
-                data: amounts[1],
+                data: thisWeekAmounts[1].slice(4, 7),
                 markPoint: {
                     data: [
                         {type: 'max', name: '最大值'},
-                        {type: 'min', name: '最小值'}
+                        // {type: 'min', name: '最小值'}
                     ]
                 },
                 markLine: {
@@ -80,11 +79,11 @@ function AmountThreeChart({
             {
                 name: '微小店',
                 type: 'bar',
-                data: amounts[2],
+                data: thisWeekAmounts[2].slice(4, 7),
                 markPoint: {
                     data: [
                         {type: 'max', name: '最大值'},
-                        {type: 'min', name: '最小值'}
+                        // {type: 'min', name: '最小值'}
                     ]
                 },
                 markLine: {
@@ -96,11 +95,11 @@ function AmountThreeChart({
             {
                 name: '微商城',
                 type: 'bar',
-                data: amounts[3],
+                data: thisWeekAmounts[3].slice(4, 7),
                 markPoint: {
                     data: [
                         {type: 'max', name: '最大值'},
-                        {type: 'min', name: '最小值'}
+                        // {type: 'min', name: '最小值'}
                     ]
                 },
                 markLine: {
@@ -112,11 +111,11 @@ function AmountThreeChart({
             {
                 name: '零售',
                 type: 'bar',
-                data: amounts[4],
+                data: thisWeekAmounts[4].slice(4, 7),
                 markPoint: {
                     data: [
                         {type: 'max', name: '最大值'},
-                        {type: 'min', name: '最小值'}
+                        // {type: 'min', name: '最小值'}
                     ]
                 },
                 markLine: {
@@ -128,11 +127,11 @@ function AmountThreeChart({
             {
                 name: '批发',
                 type: 'bar',
-                data: amounts[5],
+                data: thisWeekAmounts[5].slice(4, 7),
                 markPoint: {
                     data: [
                         {type: 'max', name: '最大值'},
-                        {type: 'min', name: '最小值'}
+                        // {type: 'min', name: '最小值'}
                     ]
                 },
                 markLine: {
@@ -147,8 +146,8 @@ function AmountThreeChart({
             //     center: ['90%', '30%'],
             //     radius: [0, '30%'],
             // }
-        ]
-    }
+        ],
+    };
 
 
     var chartPieOption = {
@@ -192,21 +191,17 @@ function AmountThreeChart({
     };
 
 
-    function getOption(barOrPie) {
-        return barOrPie === 'bar' ? chartBarOption : chartPieOption;
-    }
-
-
     return (
         <div>
-            <ECharts option={getOption(barOrPie)} style={{width: '1100px', height: '480px'}}/>
+            {isBar ? <ECharts option={chartBarOption} style={{width: '1100px', height: '480px'}}/> : null}
+            {isBar ? null : <ECharts option={chartPieOption} style={{width: '1100px', height: '480px'}}/>}
         </div>
     );
 }
 
 AmountThreeChart.propTypes = {
-    barOrPie: PropTypes.any,
-    amounts: PropTypes.array,
+    isBar: PropTypes.bool,
+    thisWeekAmounts: PropTypes.array,
 };
 
 export default AmountThreeChart;

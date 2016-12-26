@@ -6,23 +6,15 @@ export default {
     namespace: 'amount',
 
     state: {
-        barOrPie: 'bar',
-        amounts: [],
-        dateInfo:[],
-        monthAmounts: {
-            threeWeekAgo: [[],],
-            twoWeekAgo: [[],],
-            oneWeekAgo: [[],],
-            thisWeek: [[],],
+        isBarForThreeDay: true,
+        isBarForMonth: true,
+        amounts: {
+            threeWeekAgo: [[], [], [], [], [], []],
+            twoWeekAgo: [[], [], [], [], [], []],
+            oneWeekAgo: [[], [], [], [], [], []],
+            thisWeek: [[], [], [], [], [], []],
         },
-        list: [],
-        percent: {  },
-        field: '',
-        keyword: '',
-        total: null,
-        loading: false, // 控制加载状态
-        current: 1, // 当前分页信息
-        term: 0,
+        dateInfo: [],
     },
 
     subscriptions: {
@@ -53,34 +45,15 @@ export default {
                 yield put({
                     type: 'querySuccess',
                     payload: {
-                        list: data.data,
-                        total: data.page.total,
-                        current: data.page.current,
-                        percent: data.percent,
                         amounts: data.amounts,
-                        monthAmounts: data.month,
-                        dateInfo:data.date,
+                        dateInfo: data.date,
                     },
                 });
-                console.log(`amounts:${data.amounts}`);
-                console.log(`monthamounts:${data.month}`);
             }
-        },
-        *update({payload}, {select, call, put}) {
-            console.log(`update:${payload}`);
-            yield put({type: 'showLoading'});
-            yield put({
-                type: 'updateSuccess',
-                payload: payload == true ? 'pie' : 'bar',
-            });
-
         },
     },
 
     reducers: {
-        showLoading(state) {
-            return {...state, loading: true};
-        },
         querySuccess(state, action) {
             return {...state, ...action.payload, loading: false};
         },
@@ -90,7 +63,12 @@ export default {
         updateSuccess(state, action) {
             const newStatus = action.payload;
             console.log(`reducers updateSuccess:${newStatus}`);
-            return {...state, barOrPie: newStatus, loading: false};
+            return {...state, isBarForThreeDay: newStatus, loading: false};
+        },
+        updateMonthSuccess(state, action) {
+            const newStatus = action.payload;
+            console.log(`reducers updateSuccess new state:${newStatus}`);
+            return {...state, isBarForMonth: newStatus, loading: false};
         },
     },
 

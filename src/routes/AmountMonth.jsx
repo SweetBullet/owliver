@@ -12,31 +12,30 @@ import AmountMonthChart from '../components/Amount/AmountMonthChart'
 function AmountMonth({location, dispatch, amount}) {
 
     const {
-         // threeWeekAgo,twoWeekAgo,oneWeekAgo,thisWeek,
-        monthAmounts,dateInfo,
+        amounts, dateInfo, isBarForMonth,
     } = amount;
 
 
     const amountChartProps = {
-        threeWeekAgo:monthAmounts['threeWeekAgo'],
-        twoWeekAgo: monthAmounts['twoWeekAgo'],
-        oneWeekAgo:monthAmounts['oneWeekAgo'],
-        thisWeek:monthAmounts['thisWeek'],
-        dateInfo:dateInfo,
-    };
+        threeWeekAgo: amounts['threeWeekAgo'],
+        twoWeekAgo: amounts['twoWeekAgo'],
+        oneWeekAgo: amounts['oneWeekAgo'],
+        thisWeek: amounts['thisWeek'],
+        dateInfo: dateInfo,
+        isBar: isBarForMonth,
+}
+    ;
 
     function onChange(checked) {
-        console.log(`switch to ${new date()}`);
-        console.log(`amounts:${monthAmounts['threeWeekAgo'][0]}`);
-
-        // dispatch({
-        //     type: 'amount/update',
-        //     payload: checked,
-        // });
+        console.log(`switch to ${checked}`);
+        dispatch({
+            type: 'amount/updateMonthSuccess',
+            payload: !checked,
+        });
     };
 
     const amountButtonProps = {
-        cursor: '4',
+        cursor: '3',
         handleChange(term){
             switch (term) {
                 case '1':
@@ -68,7 +67,7 @@ function AmountMonth({location, dispatch, amount}) {
         <MainLayout location={location}><br/>
             <div className={styles.n}>
                 <AmountButton {...amountButtonProps}/> <br/>
-                <Switch defaultChecked={false} unCheckedChildren="饼图" checkedChildren="返回" onChange={onChange}/>
+                <Switch defaultChecked={false} unCheckedChildren="折线图" checkedChildren="柱形图" onChange={onChange}/>
                 <br/><br/>
                 <AmountMonthChart {...amountChartProps}/>
             </div>

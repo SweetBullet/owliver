@@ -2,8 +2,6 @@ import React, {PropTypes} from 'react';
 import {routerRedux} from 'dva/router';
 import {connect} from 'dva';
 import MainLayout from '../components/MainLayout/MainLayout';
-import AmountProgress from '../components/Amount/AmountProgress';
-import AmountList from '../components/Amount/AmountList';
 import AmountButton from '../components/Amount/AmountButton';
 import AmountTodayChart from '../components/Amount/AmountTodayChart';
 import styles from './Default.less';
@@ -12,7 +10,7 @@ import styles from './Default.less';
 function Amount({location, dispatch, amount}) {
 
     const {
-        loading, list, total, current, field, keyword, percent,
+        amounts,
     }=amount;
 
 
@@ -45,30 +43,16 @@ function Amount({location, dispatch, amount}) {
         },
     }
 
-    const amountListProps = {
-        dataSource: list,
-        loading,
-        total,
-        current,
-    };
 
-    const amountProgress = {
-        dkf: percent['dkf'],
-        fx: percent['fx'],
-        wxd: percent['wxd'],
-        wsc: percent['wsc'],
-        pf: percent['ls'],
-        ls: percent['pf'],
+    const amountTodayChartProps = {
+        thisWeekAmounts: amounts['thisWeek'],
     }
 
-
     return (
-        <MainLayout location={location}>
-            <div className={styles.p}>
+        <MainLayout location={location}><br/>
+            <div className={styles.n}>
                 <AmountButton {...amountButtonProps} /> <br/><br/>
-                <AmountTodayChart />
-                {/*<AmountList {...amountListProps}/>*/}
-                {/*<AmountProgress {...amountProgress} />*/}
+                <AmountTodayChart {...amountTodayChartProps}/>
             </div>
         </MainLayout>
     );
