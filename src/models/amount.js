@@ -14,7 +14,6 @@ export default {
             oneWeekAgo: [[], [], [], [], [], []],
             thisWeek: [[], [], [], [], [], []],
         },
-        dateInfo: [],
     },
 
     subscriptions: {
@@ -46,7 +45,6 @@ export default {
                     type: 'querySuccess',
                     payload: {
                         amounts: data.amounts,
-                        dateInfo: data.date,
                     },
                 });
             }

@@ -3,7 +3,7 @@ import {Switch} from 'antd';
 import ECharts from 'react-echarts';
 
 function AmountMonthChart({
-    threeWeekAgo, twoWeekAgo, oneWeekAgo, thisWeek, dateInfo, isBar,
+    threeWeekAgo, twoWeekAgo, oneWeekAgo, thisWeek, isBar,
 }) {
 
     //init yAxis: date array
@@ -264,7 +264,7 @@ function AmountMonthChart({
                     {
                         'type': 'category',
                         'axisLabel': {'interval': 0},
-                        'data': dateInfo[0],
+                        'data': dateArray.slice(0,7),
                         splitLine: {show: false}
                     }
                 ],
@@ -293,7 +293,7 @@ function AmountMonthChart({
                     {
                         'type': 'category',
                         'axisLabel': {'interval': 0},
-                        'data': dateInfo[1],
+                        'data': dateArray.slice(7,14),
                         splitLine: {show: false}
                     }
                 ],
@@ -322,7 +322,7 @@ function AmountMonthChart({
                     {
                         'type': 'category',
                         'axisLabel': {'interval': 0},
-                        'data': dateInfo[2],
+                        'data': dateArray.slice(14,21),
                         splitLine: {show: false}
                     }
                 ],
@@ -351,7 +351,7 @@ function AmountMonthChart({
                     {
                         'type': 'category',
                         'axisLabel': {'interval': 0},
-                        'data': dateInfo[3],
+                        'data': dateArray.slice(21,28),
                         splitLine: {show: false}
                     }
                 ],
@@ -486,7 +486,6 @@ AmountMonthChart.propTypes = {
     twoWeekAgo: PropTypes.array,
     oneWeekAgo: PropTypes.array,
     thisWeek: PropTypes.array,
-    date: PropTypes.array,
     isBar: PropTypes.bool,
 };
 

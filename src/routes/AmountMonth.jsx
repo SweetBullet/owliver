@@ -12,7 +12,7 @@ import AmountMonthChart from '../components/Amount/AmountMonthChart'
 function AmountMonth({location, dispatch, amount}) {
 
     const {
-        amounts, dateInfo, isBarForMonth,
+        amounts, isBarForMonth,
     } = amount;
 
 
@@ -21,7 +21,6 @@ function AmountMonth({location, dispatch, amount}) {
         twoWeekAgo: amounts['twoWeekAgo'],
         oneWeekAgo: amounts['oneWeekAgo'],
         thisWeek: amounts['thisWeek'],
-        dateInfo: dateInfo,
         isBar: isBarForMonth,
 }
     ;
