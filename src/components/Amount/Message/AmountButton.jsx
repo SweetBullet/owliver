@@ -15,8 +15,6 @@ function AmountButton({
     function onChange(e) {
         const str = e.target.value;
         handleChange(str);
-        // console.log(`radio checked:${e.target.value}`);
-
     }
 
     return (

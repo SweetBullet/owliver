@@ -3,35 +3,26 @@ import {routerRedux} from 'dva/router';
 import {connect} from 'dva';
 import MainLayout from '../components/MainLayout/MainLayout';
 import styles from './Default.less';
-import ECharts from 'react-echarts';
-import {Switch} from 'antd';
-import AmountButton from '../components/Amount/AmountButton';
-import AmountChart from '../components/Amount/AmountThreeChart';
-import AmountMonthChart from '../components/Amount/AmountMonthChart'
+import AmountButtonForMonth from '../components/Amount/Message/AmountButtonForMonth';
+import AmountMonthChart from '../components/Amount/Message/AmountMonthChart'
 
 function AmountMonth({location, dispatch, amount}) {
 
     const {
-        amounts, isBarForMonth,
+        chartType, dkf, fx, wxd, wsc, ls, pf,
     } = amount;
 
 
     const amountChartProps = {
-        threeWeekAgo: amounts['threeWeekAgo'],
-        twoWeekAgo: amounts['twoWeekAgo'],
-        oneWeekAgo: amounts['oneWeekAgo'],
-        thisWeek: amounts['thisWeek'],
-        isBar: isBarForMonth,
-}
-    ;
-
-    function onChange(checked) {
-        console.log(`switch to ${checked}`);
-        dispatch({
-            type: 'amount/updateMonthSuccess',
-            payload: !checked,
-        });
-    };
+            dkf: dkf,
+            fx: fx,
+            wxd: wxd,
+            wsc: wsc,
+            ls: ls,
+            pf: pf,
+            chartType: chartType,
+        }
+        ;
 
     const amountButtonProps = {
         cursor: '3',
@@ -58,20 +49,26 @@ function AmountMonth({location, dispatch, amount}) {
                 default:
                     break;
             }
-
         },
+        handleSelectorChange(value){
+            dispatch({
+                type: 'amount/changeChartType',
+                payload: value,
+            });
+        },
+        defaultSelector: chartType == 'bar' ? '柱形图' : chartType == 'line' ? '折线图' : '饼图',
     }
+
 
     return (
         <MainLayout location={location}><br/>
             <div className={styles.n}>
-                <AmountButton {...amountButtonProps}/> <br/>
-                <Switch defaultChecked={false} unCheckedChildren="折线图" checkedChildren="柱形图" onChange={onChange}/>
-                <br/><br/>
+                <AmountButtonForMonth {...amountButtonProps}/> <br/>
                 <AmountMonthChart {...amountChartProps}/>
             </div>
         </MainLayout>
     );
+
 
 }
 

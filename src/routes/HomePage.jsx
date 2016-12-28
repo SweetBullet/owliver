@@ -16,7 +16,7 @@ const HomePage = ({location}) => {
     return (
         <MainLayout location={location}>
             <div className={styles.normal}>
-                <h1>基础服务中心－Owl.</h1>
+                <h1>消息沟通平台－Owl.</h1>
                 <hr />
                 {/*<ul className={styles.list}>*/}
                 {/*<li>Click here to <Link to="/users">用户中心</Link></li>*/}
@@ -42,7 +42,7 @@ const HomePage = ({location}) => {
                             {/*<Menu.Item key="4"><Link to="/amount">最近三天</Link></Menu.Item>*/}
                             {/*</SubMenu>*/}
                             <Menu.Item key="4"><Link to="/amount"><Icon type="message"/>消息</Link></Menu.Item>
-                            <Menu.Item key="5"><span><Icon type="mobile"/><span>短信</span></span></Menu.Item>
+                            <Menu.Item key="5"><Link to="/shotMessageAmount"><Icon type="mobile"/>短信</Link></Menu.Item>
                             <Menu.Item key="6"><span><Icon type="mail"/><span>邮件</span></span></Menu.Item>
                             <Menu.Item key="7"><span><Icon type="swap"/><span>连接</span></span></Menu.Item>
                         </SubMenu>

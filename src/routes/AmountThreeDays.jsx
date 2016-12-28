@@ -4,19 +4,23 @@ import {connect} from 'dva';
 import MainLayout from '../components/MainLayout/MainLayout';
 import styles from './Default.less';
 import {Switch} from 'antd';
-import AmountButton from '../components/Amount/AmountButton';
-import AmountThreeChart from '../components/Amount/AmountThreeChart';
+import AmountButton from '../components/Amount/Message/AmountButton';
+import AmountThreeChart from '../components/Amount/Message/AmountThreeChart';
 
 function AmountThreeDays({location, dispatch, amount}) {
 
     const {
-        isBarForThreeDay, amounts,
+        isBarForThreeDay, dkf, fx, wxd, wsc, ls, pf,
     } = amount;
-
 
     const amountChartProps = {
         isBar: isBarForThreeDay,
-        thisWeekAmounts: amounts['thisWeek'],
+        dkf: dkf,
+        fx: fx,
+        wxd: wxd,
+        wsc: wsc,
+        ls: ls,
+        pf: pf,
     };
 
     function onChange(checked) {
@@ -25,23 +29,11 @@ function AmountThreeDays({location, dispatch, amount}) {
             type: 'amount/updateSuccess',
             payload: !checked,
         });
-
-        var da = new Date();
-        da.setDate(da.getDate() - 1);
-        console.log(`date:${da.getFullYear()}-${da.getMonth()}-${da.getDate()}`);
-        var a1=[1,2];
-        var a2=[3,4];
-        var a=[];
-        Array.prototype.push.apply(a, a1);
-        console.log(`a:${a}`);
-        Array.prototype.push.apply(a, a2);
-        console.log(`a:${a}`);
     };
 
     const amountButtonProps = {
         cursor: '2',
         handleChange(term){
-            var path = '/amount';
             switch (term) {
                 case '1':
                     dispatch(routerRedux.push({
@@ -72,7 +64,7 @@ function AmountThreeDays({location, dispatch, amount}) {
         <MainLayout location={location}><br/>
             <div className={styles.n}>
                 <AmountButton {...amountButtonProps}/> <br/>
-                <Switch defaultChecked={false} unCheckedChildren="饼图" checkedChildren="柱形图" onChange={onChange}/>
+                <Switch defaultChecked={!isBarForThreeDay} unCheckedChildren="饼图" checkedChildren="柱形图" onChange={onChange}/>
                 <br/><br/>
                 <AmountThreeChart {...amountChartProps}/>
             </div>

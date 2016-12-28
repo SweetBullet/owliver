@@ -3,7 +3,7 @@ import {Switch} from 'antd';
 import ECharts from 'react-echarts';
 
 function AmountMonthChart({
-    threeWeekAgo, twoWeekAgo, oneWeekAgo, thisWeek, isBar,
+    dkf, fx, wxd, wsc, ls, pf, chartType,
 }) {
 
     //init yAxis: date array
@@ -13,18 +13,20 @@ function AmountMonthChart({
     for (var i = 0; i < 28; i++) {
         date.setDate(date.getDate() + 1);
         var month = (date.getMonth() + 1) % 12;
-        if(month==0)
-            month=12;
+        if (month == 0)
+            month = 12;
         dateArray.push(date.getFullYear() + '-' + month + '-' + date.getDate());
     }
 
-    //parse amounts:init amount array of line chart
-    var lineAmountArray = [[], [], [], [], [], []];
-    for (var i = 0; i < 6; ++i) {
-        Array.prototype.push.apply(lineAmountArray[i], threeWeekAgo[i]);
-        Array.prototype.push.apply(lineAmountArray[i], twoWeekAgo[i]);
-        Array.prototype.push.apply(lineAmountArray[i], oneWeekAgo[i]);
-        Array.prototype.push.apply(lineAmountArray[i], thisWeek[i]);
+    //init total amount array
+    var totalArray = [0, 0, 0, 0, 0, 0];
+    for (var j = 0; j < 28; j++) {
+        totalArray[0] += dkf[j];
+        totalArray[1] += fx[j];
+        totalArray[2] += wxd[j];
+        totalArray[3] += wsc[j];
+        totalArray[4] += ls[j];
+        totalArray[5] += pf[j];
     }
 
 
@@ -54,50 +56,50 @@ function AmountMonthChart({
 
 
     dataMap.dataDkf = dataFormatter({
-        0: threeWeekAgo[0],
-        1: twoWeekAgo[0],
-        2: oneWeekAgo[0],
-        3: thisWeek[0]
+        0: dkf.slice(0,7),
+        1:  dkf.slice(7,14),
+        2:  dkf.slice(14,21),
+        3:  dkf.slice(21,28),
 
     });
 
     dataMap.dataFx = dataFormatter({
-        0: threeWeekAgo[1],
-        1: twoWeekAgo[1],
-        2: oneWeekAgo[1],
-        3: thisWeek[1]
+        0: fx.slice(0,7),
+        1:  fx.slice(7,14),
+        2:  fx.slice(14,21),
+        3:  fx.slice(21,28),
     });
 
     dataMap.dataWxd = dataFormatter({
-        0: threeWeekAgo[2],
-        1: twoWeekAgo[2],
-        2: oneWeekAgo[2],
-        3: thisWeek[2]
+        0: wxd.slice(0,7),
+        1:  wxd.slice(7,14),
+        2:  wxd.slice(14,21),
+        3:  wxd.slice(21,28),
     });
 
     dataMap.dataWsc = dataFormatter({
-        0: threeWeekAgo[3],
-        1: twoWeekAgo[3],
-        2: oneWeekAgo[3],
-        3: thisWeek[3]
+        0: wsc.slice(0,7),
+        1:  wsc.slice(7,14),
+        2:  wsc.slice(14,21),
+        3:  wsc.slice(21,28),
     });
 
     dataMap.dataLs = dataFormatter({
-        0: threeWeekAgo[4],
-        1: twoWeekAgo[4],
-        2: oneWeekAgo[4],
-        3: thisWeek[4]
+        0: ls.slice(0,7),
+        1:  ls.slice(7,14),
+        2:  ls.slice(14,21),
+        3:  ls.slice(21,28),
     });
 
     dataMap.dataPf = dataFormatter({
-        0: threeWeekAgo[5],
-        1: twoWeekAgo[5],
-        2: oneWeekAgo[5],
-        3: thisWeek[5]
+        0: pf.slice(0,7),
+        1:  pf.slice(7,14),
+        2:  pf.slice(14,21),
+        3:  pf.slice(21,28),
     });
 
 
-    var option = {
+    var barOption = {
         baseOption: {
             timeline: {
                 axisType: 'category',
@@ -135,13 +137,12 @@ function AmountMonthChart({
             title: {
                 subtext: '数据来自有赞'
             },
-            tooltip: {},
+            tooltip: {
+                trigger: 'axis'
+            },
             legend: {
-                x: 'right',
+                x: 'center',
                 data: ['多客服', '分销', '微小店', '微商城', '零售', '批发', '多门店'],
-                selected: {
-                    '多门店': false,
-                }
             },
             calculable: true,
             grid: {
@@ -264,7 +265,7 @@ function AmountMonthChart({
                     {
                         'type': 'category',
                         'axisLabel': {'interval': 0},
-                        'data': dateArray.slice(0,7),
+                        'data': dateArray.slice(0, 7),
                         splitLine: {show: false}
                     }
                 ],
@@ -293,7 +294,7 @@ function AmountMonthChart({
                     {
                         'type': 'category',
                         'axisLabel': {'interval': 0},
-                        'data': dateArray.slice(7,14),
+                        'data': dateArray.slice(7, 14),
                         splitLine: {show: false}
                     }
                 ],
@@ -322,7 +323,7 @@ function AmountMonthChart({
                     {
                         'type': 'category',
                         'axisLabel': {'interval': 0},
-                        'data': dateArray.slice(14,21),
+                        'data': dateArray.slice(14, 21),
                         splitLine: {show: false}
                     }
                 ],
@@ -351,7 +352,7 @@ function AmountMonthChart({
                     {
                         'type': 'category',
                         'axisLabel': {'interval': 0},
-                        'data': dateArray.slice(21,28),
+                        'data': dateArray.slice(21, 28),
                         splitLine: {show: false}
                     }
                 ],
@@ -422,37 +423,37 @@ function AmountMonthChart({
                 name: '多客服',
                 type: 'line',
                 barWidth: '60%',
-                data: lineAmountArray[0],
+                data: dkf,
             },
             {
                 name: '分销',
                 type: 'line',
                 barWidth: '60%',
-                data: lineAmountArray[1],
+                data: fx,
             },
             {
                 name: '微小店',
                 type: 'line',
                 barWidth: '60%',
-                data: lineAmountArray[2],
+                data: wxd,
             },
             {
                 name: '微商城',
                 type: 'line',
                 barWidth: '60%',
-                data: lineAmountArray[3],
+                data: wsc,
             },
             {
                 name: '零售',
                 type: 'line',
                 barWidth: '60%',
-                data: lineAmountArray[4],
+                data: ls,
             },
             {
                 name: '批发',
                 type: 'line',
                 barWidth: '60%',
-                data: lineAmountArray[5],
+                data: pf,
             },
             // {
             //     name: '消息占比',
@@ -471,22 +472,65 @@ function AmountMonthChart({
         ]
     };
 
+    const pieOption = {
+        title: {
+            text: '最近一个月消息量',
+            subtext: '各个通道所占比例',
+            x: 'center'
+        },
+        tooltip: {
+            trigger: 'item',
+            formatter: "{a} <br/>{b} : {c} ({d}%)"
+        },
+        legend: {
+            orient: 'vertical',
+            left: 'left',
+            data: ['多客服', '分销', '微小店', '微商城', '零售', '批发']
+        },
+        series: [
+            {
+                name: '通道',
+                type: 'pie',
+                radius: '55%',
+                center: ['50%', '60%'],
+                data: [
+                    {value: totalArray[0], name: '多客服'},
+                    {value: totalArray[1], name: '分销'},
+                    {value: totalArray[2], name: '微小店'},
+                    {value: totalArray[3], name: '微商城'},
+                    {value: totalArray[4], name: '零售'},
+                    {value: totalArray[5], name: '批发'}
+                ],
+                itemStyle: {
+                    emphasis: {
+                        shadowBlur: 10,
+                        shadowOffsetX: 0,
+                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                    }
+                }
+            }
+        ]
+    }
+
 
     return (
         <div>
-            {isBar ? <ECharts option={option} style={{width: '1100px', height: '480px'}}/> : null}
-            {isBar ? null : <ECharts option={lineOption} style={{width: '1100px', height: '480px'}}/>}
+            {chartType == 'bar' ? <ECharts option={barOption} style={{width: '1100px', height: '480px'}}/> : null}
+            {chartType == "line" ? <ECharts option={lineOption} style={{width: '1100px', height: '480px'}}/> : null}
+            {chartType == 'pie' ? <ECharts option={pieOption} style={{width: '1100px', height: '480px'}}/> : null}
         </div>
 
     );
 }
 
 AmountMonthChart.propTypes = {
-    threeWeekAgo: PropTypes.array,
-    twoWeekAgo: PropTypes.array,
-    oneWeekAgo: PropTypes.array,
-    thisWeek: PropTypes.array,
-    isBar: PropTypes.bool,
+    dkf: PropTypes.array,
+    fx: PropTypes.array,
+    wxd: PropTypes.array,
+    wsc: PropTypes.array,
+    ls: PropTypes.array,
+    pf: PropTypes.array,
+    chartType: PropTypes.string,
 };
 
 export default AmountMonthChart;

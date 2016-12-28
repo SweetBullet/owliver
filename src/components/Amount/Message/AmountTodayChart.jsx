@@ -2,17 +2,22 @@ import React, {PropTypes} from 'react';
 import ECharts from 'react-echarts';
 
 function AmountTodayChart({
-    thisWeekAmounts,
+    dkf,
+    fx,
+    wxd,
+    wsc,
+    ls,
+    pf,
 }) {
 
-    var sum = 0;
+    var sum = dkf[27] + fx[27] + wxd[27] + wsc[27] + ls[27] + pf[27];
     var percents = [];
-    for (var i = 0; i < 6; i++) {
-        sum += thisWeekAmounts[i][6];
-    }
-    for (var i = 0; i < 6; i++) {
-        percents[i] = (thisWeekAmounts[i][6] / sum).toFixed(2) * 100;
-    }
+    percents[0] = (dkf[27] / sum).toFixed(2) * 100;
+    percents[1] = (fx[27] / sum).toFixed(2) * 100;
+    percents[2] = (wxd[27] / sum).toFixed(2) * 100;
+    percents[3] = (wsc[27] / sum).toFixed(2) * 100;
+    percents[4] = (ls[27] / sum).toFixed(2) * 100;
+    percents[5] = (pf[27] / sum).toFixed(2) * 100;
 
 
     const option = {
@@ -65,13 +70,15 @@ function AmountTodayChart({
                 type: 'bar',
                 barWidth: '60%',
                 data: [
-                    {name: '多客服', value: thisWeekAmounts[0][6], itemStyle: {normal: {color: '#7cb5ec'}}},
-                    {name: '分销', value: thisWeekAmounts[1][6], itemStyle: {normal: {color: '#434348'}}},
-                    {name: '微小店', value: thisWeekAmounts[2][6], itemStyle: {normal: {color: '#90ed7d'}}},
-                    {name: '微商城', value: thisWeekAmounts[3][6], itemStyle: {normal: {color: '#f7a35c'}}},
-                    {name: '零售', value: thisWeekAmounts[4][6], itemStyle: {normal: {color: '#8085e9'}}},
-                    {name: '批发', value: thisWeekAmounts[5][6], itemStyle: {normal: {color: '#f15c80'}}},
-                    {value: 0}]
+                    {name: '多客服', value: dkf[27], itemStyle: {normal: {color: '#7cb5ec'}}},
+                    {name: '分销', value: fx[27], itemStyle: {normal: {color: '#434348'}}},
+                    {name: '微小店', value: wxd[27], itemStyle: {normal: {color: '#90ed7d'}}},
+                    {name: '微商城', value: wsc[27], itemStyle: {normal: {color: '#f7a35c'}}},
+                    {name: '零售', value: ls[27], itemStyle: {normal: {color: '#8085e9'}}},
+                    {name: '批发', value: pf[27], itemStyle: {normal: {color: '#f15c80'}}},
+                    {value: 0}
+
+                ]
             },
             {
                 name: '消息占比',
@@ -103,7 +110,12 @@ function AmountTodayChart({
 }
 
 AmountTodayChart.propTypes = {
-    thisWeekAmounts: PropTypes.array,
+    dkf: PropTypes.array,
+    fx: PropTypes.array,
+    wxd: PropTypes.array,
+    wsc: PropTypes.array,
+    ls: PropTypes.array,
+    pf: PropTypes.array,
 };
 
 export default AmountTodayChart;

@@ -2,8 +2,20 @@ import React, {PropTypes} from 'react';
 import ECharts from 'react-echarts';
 
 function AmountThreeChart({
-    isBar, thisWeekAmounts,
+    isBar, dkf, fx, wxd, wsc, ls, pf,
 }) {
+
+    //init sum of latest 3 days
+    var sum = [0, 0, 0, 0, 0, 0];
+    for (var i = 25; i < 28; i++) {
+        sum[0] += dkf[i];
+        sum[1] += fx[i];
+        sum[2] += wxd[i];
+        sum[3] += wsc[i];
+        sum[4] += ls[i];
+        sum[5] += pf[i];
+    }
+
 
     var chartBarOption = {
         title: {
@@ -47,7 +59,8 @@ function AmountThreeChart({
             {
                 name: '多客服',
                 type: 'bar',
-                data: thisWeekAmounts[0].slice(4, 7),
+                // data: thisWeekAmounts[0].slice(4, 7),
+                data: dkf.slice(25, 28),
                 markPoint: {
                     data: [
                         {type: 'max', name: '最大值'},
@@ -63,7 +76,8 @@ function AmountThreeChart({
             {
                 name: '分销',
                 type: 'bar',
-                data: thisWeekAmounts[1].slice(4, 7),
+                // data: thisWeekAmounts[1].slice(4, 7),
+                data: fx.slice(25, 28),
                 markPoint: {
                     data: [
                         {type: 'max', name: '最大值'},
@@ -79,7 +93,8 @@ function AmountThreeChart({
             {
                 name: '微小店',
                 type: 'bar',
-                data: thisWeekAmounts[2].slice(4, 7),
+                // data: thisWeekAmounts[2].slice(4, 7),
+                data: wxd.slice(25, 28),
                 markPoint: {
                     data: [
                         {type: 'max', name: '最大值'},
@@ -95,7 +110,8 @@ function AmountThreeChart({
             {
                 name: '微商城',
                 type: 'bar',
-                data: thisWeekAmounts[3].slice(4, 7),
+                // data: thisWeekAmounts[3].slice(4, 7),
+                data: wsc.slice(25, 28),
                 markPoint: {
                     data: [
                         {type: 'max', name: '最大值'},
@@ -111,7 +127,8 @@ function AmountThreeChart({
             {
                 name: '零售',
                 type: 'bar',
-                data: thisWeekAmounts[4].slice(4, 7),
+                // data: thisWeekAmounts[4].slice(4, 7),
+                data: ls.slice(25, 28),
                 markPoint: {
                     data: [
                         {type: 'max', name: '最大值'},
@@ -127,7 +144,8 @@ function AmountThreeChart({
             {
                 name: '批发',
                 type: 'bar',
-                data: thisWeekAmounts[5].slice(4, 7),
+                // data: thisWeekAmounts[5].slice(4, 7),
+                data: pf.slice(25, 28),
                 markPoint: {
                     data: [
                         {type: 'max', name: '最大值'},
@@ -172,12 +190,12 @@ function AmountThreeChart({
                 radius: '55%',
                 center: ['50%', '60%'],
                 data: [
-                    {value: 1548, name: '多客服'},
-                    {value: 310, name: '分销'},
-                    {value: 234, name: '微小店'},
-                    {value: 135, name: '微商城'},
-                    {value: 154, name: '零售'},
-                    {value: 20, name: '批发'}
+                    {value: sum[0], name: '多客服'},
+                    {value: sum[1], name: '分销'},
+                    {value: sum[2], name: '微小店'},
+                    {value: sum[3], name: '微商城'},
+                    {value: sum[4], name: '零售'},
+                    {value: sum[5], name: '批发'}
                 ],
                 itemStyle: {
                     emphasis: {
@@ -201,7 +219,12 @@ function AmountThreeChart({
 
 AmountThreeChart.propTypes = {
     isBar: PropTypes.bool,
-    thisWeekAmounts: PropTypes.array,
+    dkf: PropTypes.array,
+    fx: PropTypes.array,
+    wxd: PropTypes.array,
+    wsc: PropTypes.array,
+    ls: PropTypes.array,
+    pf: PropTypes.array,
 };
 
 export default AmountThreeChart;

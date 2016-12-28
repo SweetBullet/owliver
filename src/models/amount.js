@@ -7,13 +7,14 @@ export default {
 
     state: {
         isBarForThreeDay: true,
-        isBarForMonth: true,
-        amounts: {
-            threeWeekAgo: [[], [], [], [], [], []],
-            twoWeekAgo: [[], [], [], [], [], []],
-            oneWeekAgo: [[], [], [], [], [], []],
-            thisWeek: [[], [], [], [], [], []],
-        },
+        chartType: 'bar',
+        // amounts: {},
+        dkf: [],
+        fx: [],
+        wxd: [],
+        wsc: [],
+        ls: [],
+        pf: [],
     },
 
     subscriptions: {
@@ -44,9 +45,18 @@ export default {
                 yield put({
                     type: 'querySuccess',
                     payload: {
-                        amounts: data.amounts,
+                        // amounts: data.amounts,
+                        dkf: data.amounts['dkf'],
+                        fx: data.amounts['fx'],
+                        wxd: data.amounts['wxd'],
+                        wsc: data.amounts['wsc'],
+                        ls: data.amounts['ls'],
+                        pf: data.amounts['pf'],
                     },
                 });
+                console.log(`data:${data}`);
+                console.log(`amounts:${data.amounts}`);
+                console.log(`dkf:${data.amounts['dkf']}`);
             }
         },
     },
@@ -67,6 +77,11 @@ export default {
             const newStatus = action.payload;
             console.log(`reducers updateSuccess new state:${newStatus}`);
             return {...state, isBarForMonth: newStatus, loading: false};
+        },
+        changeChartType(state, action) {
+            const newStatus = action.payload;
+            console.log(`reducers changeChartType new state:${newStatus}`);
+            return {...state, chartType: newStatus, loading: false};
         },
     },
 
