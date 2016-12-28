@@ -167,12 +167,12 @@ function AmountMonthChart({
             series: [
                 {
                     name: '多客服', type: 'bar',
-                    markPoint: {
-                        data: [
-                            {type: 'max', name: '最大值'},
-                            {type: 'min', name: '最小值'}
-                        ]
-                    },
+                    // markPoint: {
+                    //     data: [
+                    //         {type: 'max', name: '最大值'},
+                    //         {type: 'min', name: '最小值'}
+                    //     ]
+                    // },
                     markLine: {
                         data: [
                             {type: 'average', name: '平均值'}
@@ -181,12 +181,12 @@ function AmountMonthChart({
                 },
                 {
                     name: '分销', type: 'bar',
-                    markPoint: {
-                        data: [
-                            {type: 'max', name: '最大值'},
-                            {type: 'min', name: '最小值'}
-                        ]
-                    },
+                    // markPoint: {
+                    //     data: [
+                    //         {type: 'max', name: '最大值'},
+                    //         {type: 'min', name: '最小值'}
+                    //     ]
+                    // },
                     markLine: {
                         data: [
                             {type: 'average', name: '平均值'}
@@ -195,12 +195,12 @@ function AmountMonthChart({
                 },
                 {
                     name: '微小店', type: 'bar',
-                    markPoint: {
-                        data: [
-                            {type: 'max', name: '最大值'},
-                            {type: 'min', name: '最小值'}
-                        ]
-                    },
+                    // markPoint: {
+                    //     data: [
+                    //         {type: 'max', name: '最大值'},
+                    //         {type: 'min', name: '最小值'}
+                    //     ]
+                    // },
                     markLine: {
                         data: [
                             {type: 'average', name: '平均值'}
@@ -209,12 +209,12 @@ function AmountMonthChart({
                 },
                 {
                     name: '微商城', type: 'bar',
-                    markPoint: {
-                        data: [
-                            {type: 'max', name: '最大值'},
-                            {type: 'min', name: '最小值'}
-                        ]
-                    },
+                    // markPoint: {
+                    //     data: [
+                    //         {type: 'max', name: '最大值'},
+                    //         {type: 'min', name: '最小值'}
+                    //     ]
+                    // },
                     markLine: {
                         data: [
                             {type: 'average', name: '平均值'}
@@ -223,12 +223,12 @@ function AmountMonthChart({
                 },
                 {
                     name: '零售', type: 'bar',
-                    markPoint: {
-                        data: [
-                            {type: 'max', name: '最大值'},
-                            {type: 'min', name: '最小值'}
-                        ]
-                    },
+                    // markPoint: {
+                    //     data: [
+                    //         {type: 'max', name: '最大值'},
+                    //         {type: 'min', name: '最小值'}
+                    //     ]
+                    // },
                     markLine: {
                         data: [
                             {type: 'average', name: '平均值'}
@@ -237,12 +237,12 @@ function AmountMonthChart({
                 },
                 {
                     name: '批发', type: 'bar',
-                    markPoint: {
-                        data: [
-                            {type: 'max', name: '最大值'},
-                            {type: 'min', name: '最小值'}
-                        ]
-                    },
+                    // markPoint: {
+                    //     data: [
+                    //         {type: 'max', name: '最大值'},
+                    //         {type: 'min', name: '最小值'}
+                    //     ]
+                    // },
                     markLine: {
                         data: [
                             {type: 'average', name: '平均值'}
