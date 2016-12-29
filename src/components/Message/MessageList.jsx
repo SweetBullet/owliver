@@ -45,7 +45,7 @@ function MessageList({
                 className="ant-table-pagination"
                 total={total}
                 current={current}
-                pageSize={7}
+                pageSize={3}
                 onChange={onPageChange}
             />
         </div>

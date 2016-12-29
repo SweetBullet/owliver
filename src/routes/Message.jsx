@@ -18,7 +18,8 @@ function Message({location, dispatch, message}) {
         total,
         current,
         onPageChange(page) {
-            this.props.dispatch(routerRedux.push({
+            console.log(`page change to:${page}`);
+            dispatch(routerRedux.push({
                 pathname: '/message',
                 query: {field, keyword, page},
             }));
